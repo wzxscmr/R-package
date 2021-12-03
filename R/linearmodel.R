@@ -92,7 +92,7 @@ Cons_variance = function(X,Y){
 }
 
 Normality = function(X,Y){
-  par(mfrow=c(1,2))
+  par(mfrow=c(1,1))
   intercept = rep(1,nrow(X))
   X1 = cbind(intercept,X)
   beta_hat = solve(t(X1) %*% X1) %*% t(X1) %*% Y
@@ -100,7 +100,6 @@ Normality = function(X,Y){
 
   residuals = Y - Y_fitted
   hist(residuals, main = "histogram of residuals")
-  car::qqPlot(residuals, main = "QQ plot")
 }
 
 Linearity = function(X,Y){
