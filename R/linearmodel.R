@@ -1,16 +1,18 @@
 #'Linear regression model
 #'
-#'This function is used to build linear models. It can be used to carry out simple linear regression (SLR),
-#'multiple linear regression (MLR).
+#'@name linear_model
 #'
-#'@param X
-#'A vector or matrix (one or multiple columns) of predictors.
-#'@param Y
-#'A vector or matrix (one column only) of outcome values.
+#'This function is used to build multiple linear models. It can be used to carry out simple and multiple linear regression.
 #'
-#'@return A list of attributes of the linear model.
+#'@param X A vector or matrix (one or multiple columns) of predictors.
+#'
+#'@param Y A vector of outcome values (should be a continuous variable).
+#'
+#'@return A list of important attributes of the fitted linear model.
 #'
 #'@examples
+#'data(mtcars)
+#'linear_model(X= cbind(mtcars$cyl, mtcars$hp, mtcars$drat, mtcars$wt), Y = mtcars$mpg)
 #'
 #'@export
 #'
@@ -60,9 +62,24 @@ linear_model = function(X,Y) {
   return(wzx)
 }
 
-
-
-
+#'Independence diagnosis
+#'
+#'@name Independence
+#'
+#'This function is used to do the independence diagnosis of the linear model.
+#'
+#'@param X A vector or matrix (one or multiple columns) of predictors.
+#'
+#'@param Y A vector of outcome values (should be a continuous variable).
+#'
+#'@return The autocorrelation plots of the residuals.
+#'
+#'@examples
+#'data(mtcars)
+#'Independence(X= cbind(mtcars$cyl, mtcars$hp, mtcars$drat, mtcars$wt), Y = mtcars$mpg)
+#'
+#'@export
+#'
 Independence = function(X,Y){
   intercept = rep(1,nrow(X))
   X1 = cbind(intercept,X)
@@ -79,6 +96,24 @@ Independence = function(X,Y){
   plot(residuals_i, residuals_i_1, main = "residual_i versus residual_(i-1)")
 }
 
+#'Equal variance diagnosis
+#'
+#'@name Cons_variance
+#'
+#'This function is used to do the Equal variance diagnosis of the linear model.
+#'
+#'@param X A vector or matrix (one or multiple columns) of predictors.
+#'
+#'@param Y A vector of outcome values (should be a continuous variable).
+#'
+#'@return The plot of the residuals versus fitted Y.
+#'
+#'@examples
+#'data(mtcars)
+#'Cons_variance(X= cbind(mtcars$cyl, mtcars$hp, mtcars$drat, mtcars$wt), Y = mtcars$mpg)
+#'
+#'@export
+#'
 Cons_variance = function(X,Y){
   par(mfrow=c(1,1))
   intercept = rep(1,nrow(X))
@@ -91,6 +126,24 @@ Cons_variance = function(X,Y){
   message("The plot should be a random scatter if homogeneity")
 }
 
+#'Normality diagnosis
+#'
+#'@name Normality
+#'
+#'This function is used to do the Normality diagnosis of the linear model.
+#'
+#'@param X A vector or matrix (one or multiple columns) of predictors.
+#'
+#'@param Y A vector of outcome values (should be a continuous variable).
+#'
+#'@return The histogram of the residuals.
+#'
+#'@examples
+#'data(mtcars)
+#'Normality(X= cbind(mtcars$cyl, mtcars$hp, mtcars$drat, mtcars$wt), Y = mtcars$mpg)
+#'
+#'@export
+#'
 Normality = function(X,Y){
   par(mfrow=c(1,1))
   intercept = rep(1,nrow(X))
@@ -102,6 +155,24 @@ Normality = function(X,Y){
   hist(residuals, main = "histogram of residuals")
 }
 
+#'Linearity diagnosis
+#'
+#'@name Linearity
+#'
+#'This function is used to do the Linearity diagnosis of the linear model.
+#'
+#'@param X A vector or matrix (one or multiple columns) of predictors.
+#'
+#'@param Y A vector of outcome values (should be a continuous variable).
+#'
+#'@return The partial regression plots of each predictors.
+#'
+#'@examples
+#'data(mtcars)
+#'Linearity(X= cbind(mtcars$cyl, mtcars$hp, mtcars$drat, mtcars$wt), Y = mtcars$mpg)
+#'
+#'@export
+#'
 Linearity = function(X,Y){
   intercept = rep(1,nrow(X))
   X1 = cbind(intercept,X)
