@@ -1,6 +1,4 @@
-#'Linear regression model
-#'
-#'@name linear_model
+#'linear_model
 #'
 #'This function is used to build multiple linear models. It can be used to carry out simple and multiple linear regression.
 #'
@@ -62,9 +60,7 @@ linear_model = function(X,Y) {
   return(wzx)
 }
 
-#'Independence diagnosis
-#'
-#'@name Independence
+#'Independence
 #'
 #'This function is used to do the independence diagnosis of the linear model.
 #'
@@ -96,9 +92,7 @@ Independence = function(X,Y){
   plot(residuals_i, residuals_i_1, main = "residual_i versus residual_(i-1)")
 }
 
-#'Equal variance diagnosis
-#'
-#'@name Cons_variance
+#'Cons_variance
 #'
 #'This function is used to do the Equal variance diagnosis of the linear model.
 #'
@@ -126,9 +120,7 @@ Cons_variance = function(X,Y){
   message("The plot should be a random scatter if homogeneity")
 }
 
-#'Normality diagnosis
-#'
-#'@name Normality
+#'Normality
 #'
 #'This function is used to do the Normality diagnosis of the linear model.
 #'
@@ -155,9 +147,7 @@ Normality = function(X,Y){
   hist(residuals, main = "histogram of residuals")
 }
 
-#'Linearity diagnosis
-#'
-#'@name Linearity
+#'Linearity
 #'
 #'This function is used to do the Linearity diagnosis of the linear model.
 #'
