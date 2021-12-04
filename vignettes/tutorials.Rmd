@@ -20,11 +20,42 @@ library(linearmodel)
 ```
 
 ## The usage of the this package
-This package is able to conduct **Single/Multiple linear regression** and provide some important statistics for the users. In addition, you can use the package to return some plots which are used to check the potential assumption of the linear model. 
+This package is able to conduct **Single/Multiple linear regression** and provide some important statistics for the users. In addition, you can use the package to return some diagnosis plots which are used to check the potential assumption of the linear model. 
+
+## How to use the package
+There are five functions in the package and I will show you how they work by loading the dataset. ("mtcars") 
+
+### load the dataset
+```{r}
+data("mtcars")
+X = cbind(mtcars$cyl, mtcars$hp, mtcars$drat, mtcars$wt)
+Y = mtcars$mpg
+```
 
 
 ```{r}
+linear_model(X,Y)$coefficients
+linear_model(X,Y)$residuals
+```
 
+
+```{r}
+Linearity(X,Y)
+```
+
+
+```{r}
+Independence(X,Y)
+```
+
+
+```{r}
+Cons_variance(X,Y)
+```
+
+
+```{r}
+Normality(X,Y)
 ```
 
 
@@ -32,21 +63,9 @@ This package is able to conduct **Single/Multiple linear regression** and provid
 
 ```
 
-
 ```{r}
 
 ```
-
-
-```{r}
-
-```
-
-
-```{r}
-
-```
-
 
 ```{r}
 
