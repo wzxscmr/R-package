@@ -14,6 +14,40 @@ knitr::opts_chunk$set(
 )
 ```
 
+## First we load the package
 ```{r setup}
 library(linearmodel)
+```
+
+## The usage of the this package
+This package is able to conduct **Single/Multiple linear regression** and provide some important statistics for the users. In addition, you can use the package to return some plots which are used to check the potential assumption of the linear model. 
+
+
+```{r}
+
+```
+
+
+```{r}
+
+```
+
+
+```{r}
+
+```
+
+
+```{r}
+
+```
+
+
+```{r}
+
+```
+
+
+```{r}
+
 ```
