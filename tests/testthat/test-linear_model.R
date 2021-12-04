@@ -18,10 +18,4 @@ test_that("linear_model works", {
   expect_equal( round((linear_model(X,Y))$F_stat,3),
                 round(as.vector(xb$fstatistic["value"]),3))
 
-  expect_equal(Linearity(X,Y),1)
-  expect_equal(Independence(X,Y),1)
-  expect_equal(Cons_variance(X,Y),1)
-  expect_equal(Normality(X,Y),1)
-
-
 })

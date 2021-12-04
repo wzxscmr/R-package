@@ -20,11 +20,43 @@ library(linearmodel)
 ```
 
 ## The usage of the this package
-This package is able to conduct **Single/Multiple linear regression** and provide some important statistics for the users. In addition, you can use the package to return some plots which are used to check the potential assumption of the linear model. 
+This package is able to conduct **Single/Multiple linear regression** and provide some important statistics for the users. In addition, you can use the package to return some diagnosis plots which are used to check the potential assumption of the linear model. 
+
+## How to use the package
+There are five functions in the package and I will show you how they work by loading the dataset. ("mtcars") 
+
+Load the dataset
+```{r}
+data("mtcars")
+X = cbind(mtcars$cyl, mtcars$hp, mtcars$drat, mtcars$wt)
+Y = mtcars$mpg
+```
+
+Get the coefficients of the linear regression
+```{r}
+linear_model(X,Y)$coefficients
+```
+
+Get the residuals of the linear regression
+```{r}
+linear_model(X,Y)$residuals
+```
+
+
 
 
 ```{r}
+Independence(X,Y)
+```
 
+
+```{r}
+Cons_variance(X,Y)
+```
+
+
+```{r}
+Normality(X,Y)
 ```
 
 
@@ -32,22 +64,25 @@ This package is able to conduct **Single/Multiple linear regression** and provid
 
 ```
 
-
 ```{r}
 
 ```
 
 
+## Check the effeciency of the function compared to lm() in base package
 ```{r}
+library(bench)
 
+benchmark_result1 = bench::mark(as.vector((linear_model(X,Y))$coefficients),
+    as.vector(lm(formula = mpg ~ cyl + hp + drat + wt, data = mtcars)$coefficients))
+print(benchmark_result1)
+benchmark_result1$total_time
 ```
 
-
 ```{r}
-
-```
-
-
-```{r}
-
+xb = summary(lm(formula = mpg ~ cyl + hp + drat + wt, data = mtcars))
+benchmark_result2 = bench::mark(as.vector((linear_model(X,Y))$R_square),
+    as.vector(xb$r.squared))
+print(benchmark_result2)
+benchmark_result2$total_time
 ```

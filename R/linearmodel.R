@@ -178,6 +178,7 @@ Linearity = function(X,Y){
     plot(residuals, X, main = "linearity of (X, Y) relationship")
   }
   else{
+    par(mar=c(2,2,1,1))
     par(mfrow=c(1,ncol(X)))
     for (i in (1:ncol(X))){
       Xnew = X1[,-i-1]
