@@ -90,6 +90,7 @@ Independence = function(X,Y){
   residuals_i = residuals[c(2:length(residuals))]
   residuals_i_1 = residuals[c(1:(length(residuals)-1))]
   plot(residuals_i, residuals_i_1, main = "residual_i versus residual_(i-1)")
+  return(1)
 }
 
 #'Cons_variance
@@ -118,6 +119,7 @@ Cons_variance = function(X,Y){
   residuals = Y - Y_fitted
   plot(residuals, Y_fitted, main = "residuals versus fitted Y")
   message("The plot should be a random scatter if homogeneity")
+  return(1)
 }
 
 #'Normality
@@ -145,6 +147,7 @@ Normality = function(X,Y){
 
   residuals = Y - Y_fitted
   hist(residuals, main = "histogram of residuals")
+  return(1)
 }
 
 #'Linearity
@@ -186,6 +189,7 @@ Linearity = function(X,Y){
       Y_fitted_new2 = Xnew %*% beta_hat_new2
       residuals_2 = Xnew2 - Y_fitted_new2
       plot(residuals_1, residuals_2, main="Partial Regression Plots")
+      return(1)
     }
   }
 }
