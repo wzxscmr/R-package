@@ -10,7 +10,7 @@ This package is created for the purpose of BIOSTAT 625 HW4. It is used to do the
 ## Installation
 ```{r}
 install.packages('devtools')
-devtools::install_github("wzxscmr/linearmodel")
+devtools::install_github("wzxscmr/linearmodel", build_vignettes = T)
 library("linearmodel")
 ```
 
