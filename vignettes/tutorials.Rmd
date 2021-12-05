@@ -35,7 +35,9 @@ Y = mtcars$mpg
 
 
 The input you use is like:
+
 * `X`: The predictors of variables (can be a vector or a matrix)
+
 * `Y`: The outcome variable (should be a vector)
 
 
@@ -114,14 +116,30 @@ Plot the histogram of residuals
 Normality(X,Y)
 ```
 
-
+## Compare results to base functions (lm)
 ```{r}
-
+all.equal( as.vector((linear_model(X,Y))$coefficients),
+           as.vector(lm(formula = mpg ~  hp +  wt, data = mtcars)$coefficients),check.attributes = F)
 ```
 
 ```{r}
-
+all.equal( as.vector((linear_model(X,Y))$residuals),
+           as.vector(lm(formula = mpg ~  hp +  wt, data = mtcars)$residuals),check.attributes = F)
 ```
+
+```{r}
+xb = summary(lm(formula = mpg ~ hp + wt, data = mtcars))
+all.equal( as.vector((linear_model(X,Y))$R_square),
+           as.vector(xb$r.squared),
+           check.attributes = F)
+```
+
+```{r}
+all.equal(round((linear_model(X,Y))$F_stat,3),
+          round(as.vector(xb$fstatistic["value"]),3),
+          check.attributes = F)
+```
+All the checking results are true which shows that this function is the same as the base function. (lm)
 
 
 ## Check the effeciency of the function compared to lm() in base package
@@ -141,8 +159,4 @@ benchmark_result2 = bench::mark(as.vector((linear_model(X,Y))$R_square),
 print(benchmark_result2)
 benchmark_result2$total_time
 ```
-
-```{r}
-
-
-```
+As we can see, in some case the **linear_model** function runs faster than the base function (lm), and required less allocated memory when calculate the same coefficients.
