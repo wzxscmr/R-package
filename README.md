@@ -1,8 +1,5 @@
 # linearmodel
-<!-- badges: start -->
-  [![R-CMD-check](https://github.com/wzxscmr/R-package/workflows/R-CMD-check/badge.svg)](https://github.com/wzxscmr/R-package/actions)
-   [![codecov](https://codecov.io/gh/wzxscmr/R-package/branch/main/graph/badge.svg?token=VYQ1L987CX)](https://codecov.io/gh/wzxscmr/R-package)
-  <!-- badges: end -->
+
  
 ## Overview
 This package is created for the purpose of BIOSTAT 625 HW4. It is used to do the linear regression and return a list of important parameters of the fitted linear model and the model diagnosis plots. In the package, you can use these five functions: linear_model(), Linearity(), Normality(), Cons_variance() Independence().
