@@ -25,17 +25,14 @@ This package is able to conduct **Single/Multiple linear regression** and provid
 ## How to use the package
 There are five functions in the package and I will show you how they work by loading the dataset. ("mtcars") 
 
-<<<<<<< HEAD
+
 Load the dataset
-=======
-### load the dataset
->>>>>>> 66f881bdf5a132e3a18d253f809a195ba32b85c6
 ```{r}
 data("mtcars")
 X = cbind(mtcars$cyl, mtcars$hp, mtcars$drat, mtcars$wt)
 Y = mtcars$mpg
 ```
-<<<<<<< HEAD
+
 
 Get the coefficients of the linear regression
 ```{r}
@@ -50,21 +47,15 @@ linear_model(X,Y)$residuals
 
 
 
-```{r}
-Independence(X,Y)
-=======
 
 
 ```{r}
 linear_model(X,Y)$coefficients
 linear_model(X,Y)$residuals
->>>>>>> 66f881bdf5a132e3a18d253f809a195ba32b85c6
 ```
 
 
 ```{r}
-<<<<<<< HEAD
-=======
 Linearity(X,Y)
 ```
 
@@ -75,7 +66,6 @@ Independence(X,Y)
 
 
 ```{r}
->>>>>>> 66f881bdf5a132e3a18d253f809a195ba32b85c6
 Cons_variance(X,Y)
 ```
 
@@ -93,7 +83,6 @@ Normality(X,Y)
 
 ```
 
-<<<<<<< HEAD
 
 ## Check the effeciency of the function compared to lm() in base package
 ```{r}
@@ -111,8 +100,9 @@ benchmark_result2 = bench::mark(as.vector((linear_model(X,Y))$R_square),
     as.vector(xb$r.squared))
 print(benchmark_result2)
 benchmark_result2$total_time
-=======
+```
+
 ```{r}
 
->>>>>>> 66f881bdf5a132e3a18d253f809a195ba32b85c6
+
 ```
