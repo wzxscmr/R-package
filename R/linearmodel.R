@@ -176,9 +176,10 @@ Linearity = function(X,Y){
   if (ncol(X1) == 2){
     par(mfrow=c(1,1))
     plot(residuals, X, main = "linearity of (X, Y) relationship")
+    return(1)
   }
   else{
-    par(mar=c(2,2,1,1))
+    par(mar=c(1,1,1,1))
     par(mfrow=c(1,ncol(X)))
     for (i in (1:ncol(X))){
       Xnew = X1[,-i-1]
@@ -190,8 +191,8 @@ Linearity = function(X,Y){
       Y_fitted_new2 = Xnew %*% beta_hat_new2
       residuals_2 = Xnew2 - Y_fitted_new2
       plot(residuals_1, residuals_2, main="Partial Regression Plots")
-      return(1)
     }
+    return(1)
   }
 }
 
