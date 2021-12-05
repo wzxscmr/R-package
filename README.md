@@ -36,6 +36,6 @@ browseVignettes(package = "linearmodel")
 This package was created in 12/4/2021 by Zixi Wang.
 
 ## Contact me
-**wzx@umich.edu*)**
+**wzx@umich.edu**
 
 
