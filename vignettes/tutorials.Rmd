@@ -29,47 +29,87 @@ There are five functions in the package and I will show you how they work by loa
 Load the dataset
 ```{r}
 data("mtcars")
-X = cbind(mtcars$cyl, mtcars$hp, mtcars$drat, mtcars$wt)
+X = cbind(mtcars$hp, mtcars$wt)
 Y = mtcars$mpg
 ```
 
 
-Get the coefficients of the linear regression
+The input you use is like:
+* `X`: The predictors of variables (can be a vector or a matrix)
+* `Y`: The outcome variable (should be a vector)
+
+
+Return the coefficients of the linear regression
 ```{r}
 linear_model(X,Y)$coefficients
 ```
 
-Get the residuals of the linear regression
+Return the residuals of the linear regression
 ```{r}
 linear_model(X,Y)$residuals
 ```
 
-
-
-
-
-
+Return the SSE of the linear regression
 ```{r}
-linear_model(X,Y)$coefficients
-linear_model(X,Y)$residuals
+linear_model(X,Y)$SSE
 ```
 
+Return the SSR of the linear regression
+```{r}
+linear_model(X,Y)$SSR
+```
 
+Return the MSE of the linear regression
+```{r}
+linear_model(X,Y)$MSE
+```
+
+Return the R squared of the linear regression
+```{r}
+linear_model(X,Y)$R_square
+```
+
+Return the adjusted R squared of the linear regression
+```{r}
+linear_model(X,Y)$R_square_adjusted
+```
+
+Return the t statistics of the linear regression
+```{r}
+linear_model(X,Y)$t_stat
+```
+
+Return the p value of t statistics of the linear regression
+```{r}
+linear_model(X,Y)$pt_value
+```
+
+Return the F statistics of the linear regression
+```{r}
+linear_model(X,Y)$F_stat
+```
+
+Return the p value of F statistics of the linear regression
+```{r}
+linear_model(X,Y)$pf_value
+```
+
+Plot the partial regression plots of each predictors 
 ```{r}
 Linearity(X,Y)
 ```
 
-
+Plot the autocorrelation figures of the residuals
 ```{r}
 Independence(X,Y)
 ```
 
-
+Plot the residuals versus fitted Y
 ```{r}
 Cons_variance(X,Y)
 ```
 
-
+Plot the histogram of residuals
 ```{r}
 Normality(X,Y)
 ```
@@ -89,13 +129,13 @@ Normality(X,Y)
 library(bench)
 
 benchmark_result1 = bench::mark(as.vector((linear_model(X,Y))$coefficients),
-    as.vector(lm(formula = mpg ~ cyl + hp + drat + wt, data = mtcars)$coefficients))
+    as.vector(lm(formula = mpg ~  hp +  wt, data = mtcars)$coefficients))
 print(benchmark_result1)
 benchmark_result1$total_time
 ```
 
 ```{r}
-xb = summary(lm(formula = mpg ~ cyl + hp + drat + wt, data = mtcars))
+xb = summary(lm(formula = mpg ~ hp + wt, data = mtcars))
 benchmark_result2 = bench::mark(as.vector((linear_model(X,Y))$R_square),
     as.vector(xb$r.squared))
 print(benchmark_result2)

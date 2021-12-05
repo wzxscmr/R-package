@@ -179,7 +179,7 @@ Linearity = function(X,Y){
     return(1)
   }
   else{
-    par(mar=c(1,1,1,1))
+    par(mar=c(2,2,1,1))
     par(mfrow=c(1,ncol(X)))
     for (i in (1:ncol(X))){
       Xnew = X1[,-i-1]
